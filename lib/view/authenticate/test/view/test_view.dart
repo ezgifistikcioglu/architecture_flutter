@@ -30,7 +30,7 @@ class _TestsViewState extends BaseState<TestsView> {
 
   Widget get scaffoldBody => Scaffold(
         appBar: AppBar(
-          leading: Text(""),
+          leading: textHelloWorldWidget(),
           title: textWelcomeWidget(),
           actions: [iconButtonChangeTheme()],
         ),
@@ -39,10 +39,11 @@ class _TestsViewState extends BaseState<TestsView> {
       );
 
   Text textWelcomeWidget() => Text(LocaleKeys.welcome.locale);
+  Text textHelloWorldWidget() => Text(LocaleKeys.hello_world.locale);
 
   IconButton iconButtonChangeTheme() {
     return IconButton(
-        icon: Icon(Icons.change_history),
+        icon: Icon(Icons.language),
         onPressed: () {
           context.setLocale(LanguageManager.languageManagerInstance.enLocale);
         });
@@ -56,8 +57,10 @@ class _TestsViewState extends BaseState<TestsView> {
 
   Widget get textNumber {
     return Observer(
-      builder: (context) => Text(
-        viewModel.number.toString(),
+      builder: (context) => Center(
+        child: Text(
+          viewModel.number.toString(),
+        ),
       ),
     );
   }

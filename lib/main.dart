@@ -1,6 +1,9 @@
+import 'package:acrhitecture_flutter/core/init/notifier/provider_list.dart';
+import 'package:acrhitecture_flutter/core/init/notifier/theme_notifier.dart';
 import 'package:acrhitecture_flutter/view/authenticate/test/view/test_view.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'core/constants/application/application_constants.dart';
 import 'core/init/lang/language_manager.dart';
@@ -8,12 +11,17 @@ import 'core/init/lang/language_manager.dart';
 Future<void> main() async {
   await _init();
   runApp(
-    EasyLocalization(
-        child: MyApp(),
-        supportedLocales:
-            LanguageManager.languageManagerInstance.supportedLocales,
-        path: ApplicationConstants.LANG_ASSET_PATH,
-        startLocale: LanguageManager.languageManagerInstance.trLocale),
+    MultiProvider(
+      providers: [
+        ...ApplicationProvider.applicationProviderInstance.dependItems
+      ],
+      child: EasyLocalization(
+          child: MyApp(),
+          supportedLocales:
+              LanguageManager.languageManagerInstance.supportedLocales,
+          path: ApplicationConstants.LANG_ASSET_PATH,
+          startLocale: LanguageManager.languageManagerInstance.trLocale),
+    ),
   );
 }
 
@@ -26,7 +34,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Material App",
+      theme: Provider.of<ThemeNotifier>(context, listen: false).currentTheme,
       home: TestsView(),
       debugShowCheckedModeBanner: false,
       localizationsDelegates: context.localizationDelegates,

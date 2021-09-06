@@ -1,5 +1,8 @@
+import 'package:acrhitecture_flutter/core/constants/enum/app_theme_enum.dart';
+import 'package:acrhitecture_flutter/core/init/notifier/theme_notifier.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:mobx/mobx.dart';
+import 'package:provider/provider.dart';
 
 part 'test_view_model.g.dart';
 
@@ -24,5 +27,9 @@ abstract class _TestViewModelBase with Store {
   @action
   void incrementNumber() {
     number++;
+  }
+
+  void changeTheme() {
+    Provider.of<ThemeNotifier>(context,listen: false).changeValue(AppThemes.DARK);
   }
 }
