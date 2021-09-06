@@ -8,7 +8,7 @@ class LanguageManager {
     return _languageManagerInstance!;
   }
 
-  LanguageManager._init();
+  LanguageManager._init();  ///close with constructor
 
   final enLocale = Locale("en", "US");
   final trLocale = Locale("tr", "TR");

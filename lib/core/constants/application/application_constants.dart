@@ -1,4 +1,4 @@
 class ApplicationConstants{
 
-  static const LANG_ASSET_PATH = "assets/language";
+  static const LANG_ASSET_PATH = "assets/lang";
 }
