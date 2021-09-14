@@ -1,12 +1,12 @@
-import 'package:acrhitecture_flutter/core/init/notifier/provider_list.dart';
-import 'package:acrhitecture_flutter/core/init/notifier/theme_notifier.dart';
-import 'package:acrhitecture_flutter/view/authenticate/test/view/test_view.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'core/constants/application/application_constants.dart';
 import 'core/init/lang/language_manager.dart';
+import 'core/init/notifier/provider_list.dart';
+import 'core/init/notifier/theme_notifier.dart';
+import 'view/authenticate/test/view/test_view.dart';
 
 Future<void> main() async {
   await _init();
